@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/about', function () {
     $iller = \App\Ulke::findOrFail(1)->il;
 
@@ -26,3 +22,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::post('/ilceler', 'AjaxController@getIlceler');
+
+Route::group(['prefix' => 'hesabim'], function () {
+    Route::get('/genel', 'HesabimController@index');
+    Route::get('/ilanlarim', 'HesabimController@ilanlarim');
+    Route::get('/mesajlarim', 'HesabimController@mesajlarim');
+    Route::get('/favorilerim', 'HesabimController@favorilerim');
+    Route::get('/ayarlar', 'HesabimController@ayarlarim');
+});
+
+Route::group(['prefix' => 'kurumsalhesabim'], function () {
+    Route::get('/genel', 'KurumsalHesabimController@index@index');
+    Route::get('/ilanlarim', 'KurumsalHesabimController@ilanlarim');
+    Route::get('/mesajlarim', 'KurumsalHesabimController@mesajlarim');
+    Route::get('/favorilerim', 'KurumsalHesabimController@favorilerim');
+    Route::get('/magaza-duzenleme', 'KurumsalHesabimController@magazaDuzenleme');
+    Route::get('/ayarlar', 'KurumsalHesabimController@ayarlarim');
+});
+
+Route::get('/', function () {
+    return view('welcome');
+});

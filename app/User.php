@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'fk_user_uyelik_tip_id',
     ];
+
+    public function isKurumsal()
+    {
+        if ($this->fk_user_uyelik_tip_id == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isBireysel()
+    {
+        if ($this->fk_user_uyelik_tip_id == 1) {
+            return true;
+        }
+        return false;
+    }
 }
