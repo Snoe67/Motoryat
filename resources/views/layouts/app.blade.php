@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/sticky-footer.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -46,8 +47,26 @@
                 <ul class="nav navbar-nav">
                     &nbsp;
                 </ul>
+                @if(Route::currentRouteName() == 'ilan-ver')
 
-                <!-- Right Side Of Navbar -->
+                @else
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Kelime, ilan no veya mağaza adı ile ara">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit" name="arama-buton">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/ilan-ver') }}">Ücretsiz İlan Ver</a></li>
+                    </ul>
+            @endif
+
+            <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
@@ -93,6 +112,82 @@
     </nav>
 
     @yield('content')
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-1">
+                    <div class="page-header h5">
+                        Kurumsal
+                    </div>
+                    <ul>
+                        <li><a href="#">Kurumsal 1</a></li>
+                        <li><a href="#">Kurumsal 2</a></li>
+                        <li><a href="#">Kurumsal 3</a></li>
+                        <li><a href="#">Kurumsal 4</a></li>
+                        <li><a href="#">Kurumsal 5</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <div class="page-header h5">
+                        Hizmetlerimiz
+                    </div>
+                    <ul>
+                        <li><a href="#">Hizmet 1</a></li>
+                        <li><a href="#">Hizmet 2</a></li>
+                        <li><a href="#">Hizmet 3</a></li>
+                        <li><a href="#">Hizmet 4</a></li>
+                        <li><a href="#">Hizmet 5</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <div class="page-header h5">
+                        Vira
+                    </div>
+                    <ul>
+                        <li><a href="#">Vira 1</a></li>
+                        <li><a href="#">Vira 2</a></li>
+                        <li><a href="#">Vira 3</a></li>
+                        <li><a href="#">Vira 4</a></li>
+                        <li><a href="#">Vira 5</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <div class="page-header h5">
+                        Mağaza
+                    </div>
+                    <ul>
+                        <li><a href="#">Mağaza 1</a></li>
+                        <li><a href="#">Mağaza 2</a></li>
+                        <li><a href="#">Mağaza 3</a></li>
+                        <li><a href="#">Mağaza 4</a></li>
+                        <li><a href="#">Mağaza 5</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <div class="page-header h5">
+                        Müşteri Hizmetleri
+                    </div>
+                    <ul>
+                        <li><a href="#">Müşteri Hizmetleri</a></li>
+                        <li><a href="#">Müşteri Hizmetleri</a></li>
+                        <li><a href="#">Müşteri Hizmetleri</a></li>
+                        <li><a href="#">Müşteri Hizmetleri</a></li>
+                        <li><a href="#">Müşteri Hizmetleri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-1">
+                    Sosyal Medya ve İletişim Bölümü Tek Satır
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-1">
+                    İçerik Haklarını Koruma ve Copyright Satırı
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <!-- Scripts -->

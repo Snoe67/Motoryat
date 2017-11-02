@@ -11,17 +11,14 @@
 |
 */
 
-Route::get('/about', function () {
-    $iller = \App\Ulke::findOrFail(1)->il;
-
-    return view('about')->with('iller',$iller);
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::post('/ilceler', 'AjaxController@getIlceler');
+Route::group(['prefix' => 'api/ajax'], function (){
+    Route::post('/ilceler', 'AjaxController@getIlceler');
+});
 
 Route::group(['prefix' => 'hesabim'], function () {
     Route::get('/genel', 'HesabimController@index');
@@ -43,3 +40,7 @@ Route::group(['prefix' => 'kurumsalhesabim'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/ilan-ver', function (){
+    return view('ilan-ver');
+})->middleware('auth')->name('ilan-ver');

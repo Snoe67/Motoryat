@@ -3,6 +3,10 @@
 @section('content')
     <script type="text/javascript">
 
+        window.onload = function () {
+            uyelikTipKontrol();
+        };
+
         function uyelikTipKontrol() {
             if (document.getElementById('kurumsal-buton').checked) {
                 document.getElementById('kurumsal-bolum').style.display = 'block';
@@ -40,11 +44,16 @@
                             <label for="bireysel-buton" class="col-md-4 control-label"></label>
                             <div class="col-md-6">
                                 <input id="bireysel-buton" class="radio-inline" type="radio"
-                                       onclick="uyelikTipKontrol();" name="account-type" value="1"
-                                       checked="checked">Bireysel
+                                       onclick="uyelikTipKontrol();" name="hesap-type" value="1"
+                                       @if(old('account-type') == 1 || old('account-type') == null)
+                                       checked="checked"
+                                        @endif>Bireysel
                                 <input id="kurumsal-buton" class="radio-inline" type="radio"
-                                       onclick="uyelikTipKontrol();" name="account-type"
-                                       value="2">Kurumsal
+                                       onclick="uyelikTipKontrol();" name="hesap-type"
+                                       value="2"
+                                       @if(old('account-type') == 2 && old('account-type') != null )
+                                       checked="checked"
+                                        @endif>Kurumsal
                             </div>
                         </div>
                         <div id="bireysel-bolum">
@@ -308,7 +317,8 @@
                                     <label for="il-bilgisi" class="col-md-4 control-label">İl</label>
 
                                     <div class="col-md-6">
-                                        <select class="form-control" id="il-bilgisi" onchange="getIlceByIl()" name="il-bilgisi" required
+                                        <select class="form-control" id="il-bilgisi" onchange="getIlceByIl()"
+                                                name="il-bilgisi" required
                                                 autofocus>
                                             <option id="il-sec" value="0">İl Seçiniz</option>
                                             @foreach($ulke->il as $il)
@@ -328,7 +338,8 @@
                                     <label for="ilce-bilgisi" class="col-md-4 control-label">İlçe</label>
 
                                     <div class="col-md-6">
-                                        <select class="form-control" id="ilce-bilgisi" disabled="disabled" name="ilce-bilgisi" required
+                                        <select class="form-control" id="ilce-bilgisi" disabled="disabled"
+                                                name="ilce-bilgisi" required
                                                 autofocus>
                                             <option id="ilce-sec" value="0">İlçe Seçiniz</option>
                                         </select>
@@ -346,7 +357,7 @@
 
                                     <div class="col-md-6">
                                         <textarea style="resize: none" id="adres-bilgisi" class="form-control"
-                                                  name="adres-bilgisi" required autofocus></textarea>
+                                                  name="adres-bilgisi" required autofocus>{{ old('adres-bilgisi') }}</textarea>
 
                                         @if ($errors->has('adres-bilgisi'))
                                             <span class="help-block">
@@ -439,7 +450,7 @@
             var cityId = city.options[city.selectedIndex].value;
             $.ajax({
                 type: 'POST',
-                url: 'ilceler',
+                url: 'api/ajax/ilceler',
                 data: {cityIdForIlce: cityId, _token: CSRF_TOKEN},
                 dataType: 'text',
                 success: function (resultData) {

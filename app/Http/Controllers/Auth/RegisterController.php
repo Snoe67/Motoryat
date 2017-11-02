@@ -67,7 +67,7 @@ class RegisterController extends Controller
                     'il-bilgisi' => 'required',
                     'ilce-bilgisi' => 'required',
                     'vergi-dairesi' => 'required',
-                    'tc-vergi-no' => 'required|digits:11',
+                    'tc-vergi-no' => 'required|digits:11|unique:magaza_bilgileri,magaza_vergi_tc_no',
                     'sirket-telefon' => 'required|digits:10',
                     'adres-bilgisi' => 'required',
                 ]);
@@ -83,7 +83,7 @@ class RegisterController extends Controller
                     'ilce-bilgisi' => 'required',
                     'ticari-unvan' => 'required',
                     'vergi-dairesi' => 'required',
-                    'tc-vergi-no' => 'required|digits:10',
+                    'tc-vergi-no' => 'required|digits:10|unique:magaza_bilgileri,magaza_vergi_tc_no',
                     'sirket-telefon' => 'required|digits:10',
                     'adres-bilgisi' => 'required',
                 ]);

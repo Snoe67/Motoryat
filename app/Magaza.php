@@ -21,7 +21,7 @@ class Magaza extends \Eloquent
      * @var array
      */
     protected $fillable = [
-        'yetkili_id', 'magaza_adi', 'magaza_tel_no', 'magaza_adres', 'magaza_logo_link', 'magaza_link', 'magaza_faaliyet', 'magaza_vergi_dairesi', 'magaza_vergi_tc_no', 'fk_magaza_ulke_id', 'fk_magaza_il_id', 'fk_magaza_ilce_id', 'fk_magaza_sirket_tip_id',
+        'yetkili_id', 'magaza_adi', 'magaza_tel_no', 'magaza_adres', 'magaza_logo_link', 'magaza_link', 'magaza_faaliyet', 'magaza_vergi_dairesi', 'magaza_vergi_tc_no', 'fk_magaza_ulke_id', 'fk_magaza_il_id', 'fk_magaza_ilce_id', 'fk_magaza_sirket_tip_id','magaza_ticari_unvan',
     ];
 
     /**
