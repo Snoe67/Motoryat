@@ -42,4 +42,17 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function uyeliktip()
+    {
+        return $this->belongsTo('\App\UyelikTip', 'fk_user_uyelik_tip_id', 'uyelik_tip_id');
+    }
+
+    public function magaza()
+    {
+        if ($this->isKurumsal()) {
+            return $this->hasOne('\App\Magaza', 'yetkili_id', 'id');
+        }
+        return false;
+    }
 }

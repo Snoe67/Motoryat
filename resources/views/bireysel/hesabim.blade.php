@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <ul class="nav nav-tabs">
-                        <li  class="active"><a href="{{ url('hesabim/genel') }}">Genel Görünüm</a></li>
+                        <li class="active"><a href="{{ url('hesabim/genel') }}">Genel Görünüm</a></li>
                         <li><a href="{{ url('hesabim/ilanlarim') }}">İlanlarım</a></li>
                         <li><a href="{{ url('hesabim/favorilerim') }}">Favorilerim</a></li>
                         <li><a href="{{ url('hesabim/mesajlarim') }}">Mesajlarım</a></li>
@@ -15,7 +15,7 @@
                     <div class="panel-heading">Hesabım</div>
 
                     <div class="panel-body">
-                        You are logged in!
+                        {{ Auth::getUser()->uyeliktip->uyelik_tip_adi }}
                     </div>
                 </div>
             </div>
