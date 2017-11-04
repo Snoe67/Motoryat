@@ -16,8 +16,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'api/ajax'], function (){
+Route::group(['prefix' => 'api/ajax'], function () {
     Route::post('/ilceler', 'AjaxController@getIlceler');
+    Route::post('/markalar', 'AjaxController@getMarkalar');
+    Route::post('/modeller', 'AjaxController@getModeller');
 });
 
 Route::group(['prefix' => 'hesabim'], function () {
@@ -41,6 +43,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ilan-ver', function (){
-    return view('ilan-ver');
-})->middleware('auth')->name('ilan-ver');
+Route::group(['prefix' => 'ilan-ver'], function () {
+    Route::get('/adim-1', 'IlanVerController@index')->name('ilan-ver-adim-1');
+    Route::post('/adim-2', 'IlanVerController@ikinciAdim')->name('ilan-ver-adim-2');
+});

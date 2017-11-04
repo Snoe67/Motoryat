@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class KurumsalHesabimController extends Controller
 {
@@ -15,7 +16,7 @@ class KurumsalHesabimController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','kurumsal']);
+        $this->middleware(['auth', 'kurumsal']);
     }
 
     /**
@@ -28,23 +29,28 @@ class KurumsalHesabimController extends Controller
         return view('kurumsal.kurumsalhesabim');
     }
 
-    public function ilanlarim(){
+    public function ilanlarim()
+    {
         return view('kurumsal.kurumsalilanlarim');
     }
 
-    public function favorilerim(){
+    public function favorilerim()
+    {
         return view('kurumsal.kurumsalfavorilerim');
     }
 
-    public function mesajlarim(){
+    public function mesajlarim()
+    {
         return view('kurumsal.kurumsalmesajlarim');
     }
 
-    public function ayarlarim(){
+    public function ayarlarim()
+    {
         return view('kurumsal.kurumsalayarlarim');
     }
 
-    public function magazaDuzenleme(){
+    public function magazaDuzenleme()
+    {
         return view('kurumsal.magazaduzenleme');
     }
 }

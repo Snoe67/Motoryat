@@ -47,7 +47,7 @@
                 <ul class="nav navbar-nav">
                     &nbsp;
                 </ul>
-                @if(Route::currentRouteName() == 'ilan-ver')
+                @if(Route::currentRouteName() == 'ilan-ver-adim-1')
 
                 @else
                     <form class="navbar-form navbar-left">
@@ -62,7 +62,7 @@
                         </div>
                     </form>
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/ilan-ver') }}">Ücretsiz İlan Ver</a></li>
+                        <li><a href="{{ url('/ilan-ver/adim-1') }}">Ücretsiz İlan Ver</a></li>
                     </ul>
             @endif
 
