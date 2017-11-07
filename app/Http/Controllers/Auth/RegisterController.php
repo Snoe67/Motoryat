@@ -40,23 +40,29 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $ulke = \App\Ulke::findOrFail(1);
+        return view('auth.register')->with('ulke', $ulke);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        if($data['account-type'] == 1){
+        if ($data['account-type'] == 1) {
             return Validator::make($data, [
                 'name' => 'required|max:255',
                 'surname' => 'required|max:255',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|min:6|confirmed',
             ]);
-        }else{
-            if($data['company-type'] == 1){
+        } else {
+            if ($data['company-type'] == 1) {
                 return Validator::make($data, [
                     'name' => 'required|max:255',
                     'surname' => 'required|max:255',
@@ -71,7 +77,7 @@ class RegisterController extends Controller
                     'sirket-telefon' => 'required|digits:10',
                     'adres-bilgisi' => 'required',
                 ]);
-            }else{
+            } else {
                 return Validator::make($data, [
                     'name' => 'required|max:255',
                     'surname' => 'required|max:255',
@@ -94,12 +100,12 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
-        if($data['account-type'] == 1){
+        if ($data['account-type'] == 1) {
             return User::create([
                 'name' => $data['name'],
                 'surname' => $data['surname'],
@@ -107,8 +113,8 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'fk_user_uyelik_tip_id' => $data['account-type'],
             ]);
-        }else{
-            if($data['company-type'] == 1){
+        } else {
+            if ($data['company-type'] == 1) {
                 $user = User::create([
                     'name' => $data['name'],
                     'surname' => $data['surname'],
@@ -118,7 +124,7 @@ class RegisterController extends Controller
                     'fk_user_uyelik_tip_id' => $data['account-type'],
                 ]);
                 $insertedID = $user->id;
-                $ticariUnvan = $user->name ." ". $user->surname;
+                $ticariUnvan = $user->name . " " . $user->surname;
                 Magaza::create([
                     'yetkili_id' => $insertedID,
                     'magaza_adi' => "tanımsız",
@@ -134,7 +140,7 @@ class RegisterController extends Controller
                     'fk_magaza_sirket_tip_id' => $data['company-type'],
                 ]);
                 return $user;
-            }else{
+            } else {
                 $user = User::create([
                     'name' => $data['name'],
                     'surname' => $data['surname'],

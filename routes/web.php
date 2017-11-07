@@ -31,7 +31,7 @@ Route::group(['prefix' => 'hesabim'], function () {
 });
 
 Route::group(['prefix' => 'kurumsalhesabim'], function () {
-    Route::get('/genel', 'KurumsalHesabimController@index@index');
+    Route::get('/genel', 'KurumsalHesabimController@index');
     Route::get('/ilanlarim', 'KurumsalHesabimController@ilanlarim');
     Route::get('/mesajlarim', 'KurumsalHesabimController@mesajlarim');
     Route::get('/favorilerim', 'KurumsalHesabimController@favorilerim');
@@ -44,6 +44,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'ilan-ver'], function () {
-    Route::get('/adim-1', 'IlanVerController@index')->name('ilan-ver-adim-1');
-    Route::post('/adim-2', 'IlanVerController@ikinciAdim')->name('ilan-ver-adim-2');
+    Route::get('/adim-1', 'IlanVerController@ilkAdim')->name('ilan-ver-adim-1');
+    Route::get('/adim-2', 'IlanVerController@ikinciAdimGet')->name('ilan-ver-adim-2');
+    Route::post('/adim-2', 'IlanVerController@ikinciAdimVeriler');
 });

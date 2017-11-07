@@ -14,6 +14,6 @@ class IlanResim extends \Eloquent
     protected $table = "ilan_resimleri";
     protected $primaryKey = "ilan_resim_id";
     protected $fillable = [
-        'ilan_resim_sira', 'ilan_resim_link'
+        'ilan_resim_sira', 'ilan_resim_link', 'ilan_resim_orta_link'
     ];
 }

@@ -14,12 +14,13 @@
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/sticky-footer.css" rel="stylesheet">
 
-    <!-- Scripts -->
+<!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    @stack('scripts')
 </head>
 <body>
 <div id="app">
@@ -48,6 +49,8 @@
                     &nbsp;
                 </ul>
                 @if(Route::currentRouteName() == 'ilan-ver-adim-1')
+
+                @elseif(Route::currentRouteName() == 'ilan-ver-adim-2')
 
                 @else
                     <form class="navbar-form navbar-left">

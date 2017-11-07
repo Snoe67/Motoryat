@@ -8,8 +8,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Kategori Seçimi</div>
 
-                    <form name="ilan-ver-1" class="form-horizontal" role="form" method="POST"
-                          action="{{ url('/ilan-ver/adim-2') }}">
+                    <form name="ilan-ver-1" class="form-horizontal" role="form" method="post"
+                          action="{{ route('ilan-ver-adim-2') }}">
                         {{ csrf_field() }}
                         <div class="panel-body">
                             <label for="alt-kat-bilgisi" class="control-label">Kategori Seçiniz</label>

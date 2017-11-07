@@ -14,9 +14,14 @@ class MotoryatDetay extends \Eloquent
     protected $table = "motoryat_detaylar";
     protected $primaryKey = "md_ilan_id";
     protected $fillable = [
-        'motor_markasi', 'motor_adedi', 'motor_gucu', 'yakit_tip_id', 'calisma_saati', 'govde_tip_id', 'boy',
-        'en', 'kamara_sayisi', 'yatak_sayisi', 'flybridge_durumu', 'bulundugu_ulke_id'
+        'motor_adedi', 'motor_gucu', 'yakit_tip_id', 'calisma_saati', 'govde_tip_id', 'boy',
+        'en', 'kamara_sayisi', 'yatak_sayisi', 'flybridge_durumu', 'bulundugu_ulke_id', 'motor_marka_id'
     ];
+
+    public function motormarka()
+    {
+        return $this->belongsTo('\App\MotorMarka', 'motor_marka_id', 'motor_id');
+    }
 
     public function yakittip()
     {
